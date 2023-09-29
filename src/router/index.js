@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import FicheMovieView from "../views/FicheMovieView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,14 +11,40 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/movies',
+      name: 'movies',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/MovieView.vue')
+    },
+    {
+      path: '/acteurs',
+      name: 'acteurs',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/MovieView.vue')
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/MovieView.vue')
+    },
+    {
+      path: '/fiche-movie/:id',
+      name: 'ficheMovie',
+      component: FicheMovieView
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(to);
+  next();
+});
 
 export default router
