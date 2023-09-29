@@ -2,12 +2,13 @@
 import {onMounted, ref} from 'vue'
 import axios from 'axios'
 import CardFilm from "./CardFilm.vue";
+import CardActeur from "./CardActeur.vue";
 
-let data = ref('')
-const dataAll = ref('')
+let films = ref('')
+let acteurs = ref('')
 
 onMounted(async () => {
-  const response = await axios.get(
+  const filmResponse = await axios.get(
       'http://localhost:8000/api/movies?page=1',
       {
         headers: {
@@ -15,15 +16,38 @@ onMounted(async () => {
         }
       }
   )
-  data.value = response.data
-  dataAll.value = data.value;
-  // console.log(response)
+  films.value = filmResponse.data
+
+  const acteurResponse = await axios.get(
+      'http://localhost:8000/api/actors?page=1',
+      {
+        headers: {
+          'Accept': 'application/json'
+        }
+      }
+  )
+  console.log(acteurResponse)
+  acteurs.value = acteurResponse.data
+
 })
 </script>
 
 <template>
-  <div v-for="(film, key) in data">
-    <card-film v-if="key < 4" :film="film"/>
-  </div>
+  <section>
+    <h2>4 films (API)</h2>
+    <article class="movies-container">
+      <div v-for="(film, key) in films.slice(0,4)" class="card-container">
+        <card-film :film="film"/>
+      </div>
+    </article>
+  </section>
 
+  <section>
+    <h2>4 acteurs (API)</h2>
+    <article class="movies-container">
+    <div v-for="(acteur, key) in acteurs.slice(0,4)" style="flex: 1">
+      <card-acteur :acteur="acteur"/>
+    </div>
+    </article>
+  </section>
 </template>
