@@ -8,6 +8,7 @@ movie.releaseDate = date.toLocaleDateString('fr-FR', options)
 </script>
 
 <template>
+  <h1>test</h1>
 <h2>{{movie.title}}</h2>
   <em>{{movie.description}}</em>
   <hr>
