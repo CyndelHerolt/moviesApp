@@ -34,7 +34,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <h2>4 films (API)</h2>
+    <h2>Films à la Une</h2>
     <article class="movies-container">
       <div v-for="(film, key) in films.slice(0,4)" class="card-container">
         <card-film :film="film"/>
