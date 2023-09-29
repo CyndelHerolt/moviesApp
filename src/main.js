@@ -5,7 +5,20 @@ import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faHouseHeart } from '@fortawesome/pro-light-svg-icons'
+import { faFilm } from '@fortawesome/pro-light-svg-icons'
+import { faUsers } from '@fortawesome/pro-light-svg-icons'
+import { faListTimeline } from '@fortawesome/pro-light-svg-icons'
 
 app.use(router)
+
+library.add(faHouseHeart)
+library.add(faFilm)
+library.add(faUsers)
+library.add(faListTimeline)
+
+app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.mount('#app')

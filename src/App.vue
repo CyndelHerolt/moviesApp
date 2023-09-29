@@ -19,22 +19,22 @@ import HomeView from "./views/HomeView.vue";
       <ul>
         <li>
           <RouterLink to="/">
-            Accueil
+            <font-awesome-icon :icon="['fal', 'house-heart']" />
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/movies">
-            Films
+            <font-awesome-icon :icon="['fal', 'film']" />
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/acteurs">
-            Acteurs
+            <font-awesome-icon :icon="['fal', 'users']" />
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/categories">
-            Catégories
+            <font-awesome-icon :icon="['fal', 'list-timeline']" />
           </RouterLink>
         </li>
       </ul>
