@@ -22,7 +22,6 @@ onMounted(async () => {
 </script>
 
 <template>
-
   <div v-for="(film, key) in data">
     <card-film v-if="key < 4" :film="film"/>
   </div>
