@@ -197,3 +197,11 @@ ul {
         position: absolute;
     }
 }
+
+.banniere {
+    /*width: 100%;*/
+    /*height: 300px;*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    height: 400px;
+}
