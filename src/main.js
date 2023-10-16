@@ -11,6 +11,8 @@ import { faHouseHeart } from '@fortawesome/pro-light-svg-icons'
 import { faFilm } from '@fortawesome/pro-light-svg-icons'
 import { faUsers } from '@fortawesome/pro-light-svg-icons'
 import { faListTimeline } from '@fortawesome/pro-light-svg-icons'
+import { faUser } from '@fortawesome/pro-light-svg-icons'
+import { faUserLargeSlash } from '@fortawesome/pro-light-svg-icons'
 
 app.use(router)
 
@@ -18,6 +20,8 @@ library.add(faHouseHeart)
 library.add(faFilm)
 library.add(faUsers)
 library.add(faListTimeline)
+library.add(faUser)
+library.add(faUserLargeSlash)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 
