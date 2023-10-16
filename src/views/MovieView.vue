@@ -1,16 +1,31 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-</template>
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
 <script setup>
+import {onMounted, ref} from 'vue'
+import axios from 'axios'
+import CardFilm from "../components/CardFilm.vue";
+
+let films = ref('')
+let acteurs = ref('')
+
+onMounted(async () => {
+  const filmResponse = await axios.get(
+      'http://localhost:8000/api/movies?page=1',
+      {
+        headers: {
+          'Accept': 'application/json'
+        }
+      }
+  )
+  films.value = filmResponse.data
+})
 </script>
+
+<template>
+  <section>
+    <h2>Films à la Une</h2>
+    <article class="movies-container">
+      <div v-for="(film, key) in films" class="card-container">
+        <card-film :film="film"/>
+      </div>
+    </article>
+  </section>
+</template>
