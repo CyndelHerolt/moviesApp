@@ -26,7 +26,7 @@ onMounted(async () => {
   <section>
     <h2>Acteurs</h2>
     <article class="movies-container">
-      <div v-for="(acteur, key) in acteurs" style="flex: 1">
+      <div v-for="acteur in acteurs" :key="acteur.id" style="flex: 1">
         <card-acteur :acteur="acteur"/>
       </div>
     </article>
