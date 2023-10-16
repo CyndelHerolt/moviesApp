@@ -1,6 +1,17 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HomeView from "./views/HomeView.vue";
+import {RouterLink, RouterView} from 'vue-router'
+import {ref, computed} from 'vue';
+
+const userToken = ref(localStorage.getItem('user-token'));
+
+const isLoggedIn = computed(() => {
+  return userToken.value != null;
+});
+
+const logout = () => {
+  localStorage.removeItem('user-token');
+  location.reload();
+};
 </script>
 <template>
   <header>
@@ -16,25 +27,35 @@ import HomeView from "./views/HomeView.vue";
 
   <aside class="side_menu">
     <nav>
-      <ul>
+      <ul v-if="isLoggedIn">
         <li>
           <RouterLink to="/">
-            <font-awesome-icon :icon="['fal', 'house-heart']" />
+            <font-awesome-icon :icon="['fal', 'house-heart']"/>
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/movies">
-            <font-awesome-icon :icon="['fal', 'film']" />
+            <font-awesome-icon :icon="['fal', 'film']"/>
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/acteurs">
-            <font-awesome-icon :icon="['fal', 'users']" />
+            <font-awesome-icon :icon="['fal', 'users']"/>
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/categories">
-            <font-awesome-icon :icon="['fal', 'list-timeline']" />
+            <font-awesome-icon :icon="['fal', 'list-timeline']"/>
+          </RouterLink>
+        </li>
+        <li @click="logout">
+          <font-awesome-icon :icon="['fal', 'user-large-slash']"/>
+        </li>
+      </ul>
+      <ul v-else>
+        <li>
+          <RouterLink to="/login">
+            <font-awesome-icon :icon="['fal', 'user']"/>
           </RouterLink>
         </li>
       </ul>

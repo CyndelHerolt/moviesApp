@@ -4,6 +4,13 @@ import axios from 'axios'
 import CardFilm from "./CardFilm.vue";
 import CardActeur from "./CardActeur.vue";
 
+const token = localStorage.getItem('user-token');
+if (token) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
+console.log(token)
+
 let films = ref('')
 let acteurs = ref('')
 
@@ -12,7 +19,8 @@ onMounted(async () => {
       'http://localhost:8000/api/movies?page=1',
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
         }
       }
   )

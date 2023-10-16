@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import FicheMovieView from "../views/FicheMovieView.vue";
 import FicheActorView from "../views/FicheActorView.vue";
 import FicheCategoryView from "../views/FicheCategoryView.vue";
+import LoginView from "../views/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,11 +52,22 @@ const router = createRouter({
       name: 'ficheCategorie',
       component: FicheCategoryView
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to);
+  const PUBLIC_PAGES = ['login'];
+  const loggedIn = localStorage.getItem('user-token');
+
+  if (!loggedIn && !PUBLIC_PAGES.includes(to.name)) {
+    return next('/login');
+  }
+
   next();
 });
 
