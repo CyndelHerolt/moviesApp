@@ -162,6 +162,7 @@ ul {
         background-color: #1d1d1dd1;
         border: solid 1px var(--color-border);
         transition: 0.4s;
+        height: 100%;
     }
 
     .card:hover {
@@ -204,4 +205,16 @@ ul {
     /*background-size: cover;*/
     /*background-position: center;*/
     height: 400px;
+}
+
+.actor {
+    padding: 15px;
+}
+
+.link {
+    text-decoration: underline;
+
+    &:hover {
+        color: var(--color-focus);
+    }
 }
