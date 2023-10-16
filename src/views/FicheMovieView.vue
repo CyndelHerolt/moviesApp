@@ -18,9 +18,14 @@ onMounted(async () => {
   )
   film.value = filmResponse.data
 })
+
+let posterPath = "/src/assets/posters/"; // Le chemin d'accès à l'image
 </script>
 <template>
-  <div class="about">
+  <div>
+    <img class="banniere" :src="posterPath+film.image" alt="affiche du film">
+<!--    <div class="banniere" :style="{ backgroundImage: `url(${posterPath + film.image})` }"></div>-->
+    <br>
     <h1>{{ film.title }}</h1>
     <p>{{ film.description }}</p>
   </div>
