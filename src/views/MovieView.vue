@@ -23,7 +23,7 @@ onMounted(async () => {
   <section>
     <h2>Films à la Une</h2>
     <article class="movies-container">
-      <div v-for="(film, key) in films" class="card-container">
+      <div v-for="film in films" :key="film.id" class="card-container">
         <card-film :film="film"/>
       </div>
     </article>

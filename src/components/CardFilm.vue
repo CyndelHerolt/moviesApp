@@ -26,10 +26,10 @@ let posterPath = "src/assets/posters/" + movie.image; // Le chemin d'accès à l
           <br>
           <small>Durée : {{ movie.duration }} minutes</small>
         </div>
-<!--        <h4>Acteurs principaux</h4>-->
-<!--        <ul>-->
-<!--          <li v-for="acteur in movie.actor">{{ acteur.firstName }}</li>-->
-<!--        </ul>-->
+        <h4>Acteurs principaux</h4>
+        <ul>
+          <li v-for="acteur in movie.actor">{{ acteur.firstName }}</li>
+        </ul>
       </div>
     </div>
   </routerLink>
