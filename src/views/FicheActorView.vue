@@ -7,12 +7,15 @@ const route = useRoute()
 const id = route.params.id
 let actor = ref('')
 
+const userToken = ref(localStorage.getItem('user-token'));
+
 onMounted(async () => {
   const actorResponse = await axios.get(
       'http://localhost:8000/api/actor/' + id,
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${userToken.value}`
         }
       }
   )

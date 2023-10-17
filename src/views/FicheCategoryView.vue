@@ -2,7 +2,8 @@
 import {useRoute} from "vue-router"
 import {onMounted, ref} from 'vue'
 import axios from 'axios'
-import CardFilm from "../components/CardFilm.vue";
+
+const userToken = ref(localStorage.getItem('user-token'));
 
 const route = useRoute()
 const id = route.params.id
@@ -13,7 +14,8 @@ onMounted(async () => {
       'http://localhost:8000/api/categories/' + id,
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${userToken.value}`
         }
       }
   )
