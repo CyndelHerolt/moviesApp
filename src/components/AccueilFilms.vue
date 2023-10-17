@@ -42,20 +42,24 @@ onMounted(async () => {
 
 <template>
   <section>
-    <h2>Films à la Une</h2>
-    <article class="movies-container">
-      <div v-for="film in films.slice(0,4)" :key="film.id" class="card-container">
-        <card-film :film="film"/>
+    <article>
+      <h2>Films à la Une</h2>
+      <div class="movies-container">
+        <div v-for="film in films.slice(0,4)" :key="film.id" class="card-container">
+          <card-film :film="film"/>
+        </div>
       </div>
     </article>
   </section>
 
   <section>
-    <h2>4 acteurs (API)</h2>
-    <article class="movies-container">
-    <div v-for="acteur in acteurs.slice(0,4)" :key="acteur.id" style="flex: 1">
-      <card-acteur :acteur="acteur"/>
-    </div>
+    <article>
+      <h2>4 acteurs (API)</h2>
+      <div class="movies-container">
+        <div v-for="acteur in acteurs.slice(0,4)" :key="acteur.id" style="flex: 1">
+          <card-acteur :acteur="acteur"/>
+        </div>
+      </div>
     </article>
   </section>
 </template>

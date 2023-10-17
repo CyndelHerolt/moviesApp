@@ -6,13 +6,15 @@ import CardActeur from "../components/CardActeur.vue";
 let films = ref('')
 let acteurs = ref('')
 
-onMounted(async () => {
+const userToken = ref(localStorage.getItem('user-token'));
 
+onMounted(async () => {
   const acteurResponse = await axios.get(
       'http://localhost:8000/api/actors?page=1',
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${userToken.value}`
         }
       }
   )
@@ -24,10 +26,12 @@ onMounted(async () => {
 
 <template>
   <section>
-    <h2>Acteurs</h2>
-    <article class="movies-container">
-      <div v-for="acteur in acteurs" :key="acteur.id" style="flex: 1">
-        <card-acteur :acteur="acteur"/>
+    <article>
+      <h2>Acteurs</h2>
+      <div class="movies-container">
+        <div v-for="acteur in acteurs" :key="acteur.id" style="flex: 1">
+          <card-acteur :acteur="acteur"/>
+        </div>
       </div>
     </article>
   </section>

@@ -6,12 +6,15 @@ import CardFilm from "../components/CardFilm.vue";
 let films = ref('')
 let acteurs = ref('')
 
+const userToken = ref(localStorage.getItem('user-token'));
+
 onMounted(async () => {
   const filmResponse = await axios.get(
       'http://localhost:8000/api/movies?page=1',
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${userToken.value}`
         }
       }
   )
@@ -21,10 +24,12 @@ onMounted(async () => {
 
 <template>
   <section>
-    <h2>Films à la Une</h2>
-    <article class="movies-container">
-      <div v-for="film in films" :key="film.id" class="card-container">
-        <card-film :film="film"/>
+    <article>
+      <h2>Films à la Une</h2>
+      <div class="movies-container">
+        <div v-for="film in films" :key="film.id" class="card-container">
+          <card-film :film="film"/>
+        </div>
       </div>
     </article>
   </section>
