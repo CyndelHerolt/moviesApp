@@ -16,7 +16,7 @@ let acteurs = ref('')
 
 onMounted(async () => {
   const filmResponse = await axios.get(
-      'http://localhost:8000/api/movies?page=1',
+      'http://localhost:8000/api/movies?online=true&page=1',
       {
         headers: {
           'Accept': 'application/json',
