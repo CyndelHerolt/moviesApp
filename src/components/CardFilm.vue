@@ -12,7 +12,7 @@ let posterPath = "/src/assets/posters/" + movie.image; // Le chemin d'accès à 
 <template>
   <routerLink :to="'/fiche-movie/'+movie.id" class="card">
     <div>
-      <p class="categorie">{{movie.category.name}}</p>
+      <p v-if="movie.category" class="categorie">{{movie.category.name}}</p>
       <img :src="posterPath" alt="affiche du film">
       <div class="infos">
 
