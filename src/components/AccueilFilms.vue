@@ -1,26 +1,28 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import axios from 'axios'
 import CardFilm from "./CardFilm.vue";
 import CardActeur from "./CardActeur.vue";
 
-const token = localStorage.getItem('user-token');
+const token = localStorage.getItem('user-token')
 if (token) {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
 console.log(token)
 
 let films = ref('')
 let acteurs = ref('')
+let searchString = ref('')
 
-onMounted(async () => {
+const apiCall = async () => {
+  const URI = `http://localhost:8000/api/movies?online=true&page=1&title=${searchString.value}`
   const filmResponse = await axios.get(
-      'http://localhost:8000/api/movies?online=true&page=1',
+      URI,
       {
         headers: {
           'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
         }
       }
   )
@@ -30,22 +32,32 @@ onMounted(async () => {
       'http://localhost:8000/api/actors?page=1',
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
         }
       }
   )
   console.log(acteurResponse)
   acteurs.value = acteurResponse.data
+}
 
-})
+// When searchString is updated, call the apiCall function
+watch(searchString, apiCall)
+
+// Make API request when mounted.
+onMounted(apiCall)
 </script>
 
 <template>
   <section>
     <article>
+      <input
+          type="text"
+          v-model="searchString"
+          placeholder="Rechercher par titre de film"
+      />
       <h2>Films à la Une</h2>
       <div class="movies-container">
-        <div v-for="film in films.slice(0,4)" :key="film.id" class="card-container">
+        <div v-for="film in films.slice(0, 4)" :key="film.id" class="card-container">
           <card-film :film="film"/>
         </div>
       </div>
