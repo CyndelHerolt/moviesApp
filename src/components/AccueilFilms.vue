@@ -1,6 +1,7 @@
 <script setup>
 import { watch, ref, onMounted } from 'vue'
 import axios from 'axios'
+import { debounce } from 'lodash'
 import CardFilm from "./CardFilm.vue";
 import CardActeur from "./CardActeur.vue";
 
@@ -15,7 +16,7 @@ let films = ref('')
 let acteurs = ref('')
 let searchString = ref('')
 
-const apiCall = async () => {
+const apiCall = debounce(async () => {
   const URI = `http://localhost:8000/api/movies?online=true&page=1&title=${searchString.value}`
   const filmResponse = await axios.get(
       URI,
@@ -36,9 +37,8 @@ const apiCall = async () => {
         }
       }
   )
-  console.log(acteurResponse)
   acteurs.value = acteurResponse.data
-}
+}, 500)
 
 // When searchString is updated, call the apiCall function
 watch(searchString, apiCall)

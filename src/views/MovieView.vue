@@ -1,6 +1,7 @@
 <script setup>
 import {watch, onMounted, ref} from 'vue'
 import axios from 'axios'
+import { debounce } from 'lodash'
 import CardFilm from "../components/CardFilm.vue";
 
 let films = ref('')
@@ -8,7 +9,7 @@ let searchString = ref('')
 
 const userToken = ref(localStorage.getItem('user-token'))
 
-const getMovies = async () => {
+const getMovies = debounce( async () => {
   const URI = `http://localhost:8000/api/movies?online=true&order[title]=asc&page=1&title=${searchString.value}`
   const filmResponse = await axios.get(
       URI,
@@ -20,7 +21,7 @@ const getMovies = async () => {
       }
   )
   films.value = filmResponse.data
-}
+}, 500)
 
 // Make API request when mounted.
 onMounted(getMovies)
