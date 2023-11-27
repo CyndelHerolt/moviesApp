@@ -11,7 +11,7 @@
     "@fortawesome/fontawesome-pro": "^6.4.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/pro-light-svg-icons": "^6.4.2",
-    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@fortawesome/vue-fontawesome": "^3.0.5",
     "axios": "^1.5.1",
     "lodash": "^4.17.21",
     "vue": "^3.3.4",
