@@ -60,7 +60,6 @@ function nextPage() {
   }
 }
 
-// Watch searchString and call the getMovies function.
 watch(searchString, () => getMovies())
 
 // Make API request when mounted.
