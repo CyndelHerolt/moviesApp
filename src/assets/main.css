@@ -199,9 +199,32 @@ ul {
     }
 }
 
-.banniere {
+.banniereContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 25px;
+
+}
+
+.banniere {
     height: 400px;
+}
+
+.banniereContainer button {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: solid 2px var(--color-text);
+    padding: 5px;
+    margin: 10px 0;
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+.banniereContainer svg {
+    color: var(--color-text);
 }
 
 .actor, .categorie {
