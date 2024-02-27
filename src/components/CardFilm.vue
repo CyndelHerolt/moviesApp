@@ -7,6 +7,21 @@ const options = {year: 'numeric', month: 'numeric', day: 'numeric'};
 movie.releaseDate = date.toLocaleDateString('fr-FR', options)
 
 let posterPath = "/src/assets/posters/" + movie.image; // Le chemin d'accès à l'image
+
+import axios from 'axios';
+
+const deleteMovie = async () => {
+  try {
+    await axios.delete(`http://localhost:8000/api/movies/${movie.id}`, {
+      headers: {
+        'Accept': '*/*',
+        'Authorization': `Bearer ${localStorage.getItem('user-token')}`
+      }
+    });
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+};
 </script>
 
 <template>
@@ -30,6 +45,7 @@ let posterPath = "/src/assets/posters/" + movie.image; // Le chemin d'accès à 
       </div>
     </div>
   </routerLink>
+  <button @click="deleteMovie">Supprimer le film</button>
 </template>
 
 <style scoped>
