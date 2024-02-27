@@ -132,10 +132,6 @@ async function uploadImage() {
         <div v-if="editMode">
           <form @submit.prevent="updateFilm">
 
-            <!--            <div class="image">-->
-            <!--              <input type="file" ref="fileInput"/>-->
-            <!--            </div>-->
-
             <div class="title">
               <label for="title">Titre</label>
               <input v-model="film.title" id="title" type="text">
