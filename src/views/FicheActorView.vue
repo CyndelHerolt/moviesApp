@@ -11,7 +11,7 @@ const userToken = ref(localStorage.getItem('user-token'));
 
 onMounted(async () => {
   const actorResponse = await axios.get(
-      'http://localhost:8000/api/actor/' + id,
+      'https://185.216.25.179/wr506/api/actor/' + id,
       {
         headers: {
           'Accept': 'application/json',

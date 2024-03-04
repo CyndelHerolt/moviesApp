@@ -13,7 +13,7 @@ const next = ref('')
 const previous = ref('')
 
 const getMovies = debounce(async (url) => {
-  const URI = url || `http://localhost:8000/api/movies?online=true&order[title]=asc&page=1&title=${searchString.value}`;
+  const URI = url || `https://185.216.25.179/wr506/api/movies?online=true&order[title]=asc&page=1&title=${searchString.value}`;
   const filmResponse = await axios.get(
       URI,
       {
@@ -69,7 +69,7 @@ const actors = ref([]);
 
 onMounted(async () => {
   try {
-    const categoriesResponse = await axios.get('http://localhost:8000/api/categories', {
+    const categoriesResponse = await axios.get('https://185.216.25.179/wr506/api/categories', {
       headers: {
         'Accept': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('user-token')}`
@@ -77,7 +77,7 @@ onMounted(async () => {
     });
     categories.value = categoriesResponse.data;
 
-    const actorsResponse = await axios.get('http://localhost:8000/api/actors', {
+    const actorsResponse = await axios.get('https://185.216.25.179/wr506/api/actors', {
       headers: {
         'Accept': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('user-token')}`
@@ -102,7 +102,7 @@ const movie = ref({
 
 const createMovie = async () => {
   try {
-    await axios.post('http://localhost:8000/api/movies', movie.value, {
+    await axios.post('https://185.216.25.179/wr506/api/movies', movie.value, {
       headers: {
         'Accept': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('user-token')}`

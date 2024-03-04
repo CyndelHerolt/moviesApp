@@ -17,7 +17,7 @@ let acteurs = ref('')
 let searchString = ref('')
 
 const apiCall = debounce(async () => {
-  const URI = `http://localhost:8000/api/movies?online=true&page=1&title=${searchString.value}`
+  const URI = `https://185.216.25.179/wr506/api/movies?online=true&page=1&title=${searchString.value}`
   const filmResponse = await axios.get(
       URI,
       {
@@ -30,7 +30,7 @@ const apiCall = debounce(async () => {
   films.value = filmResponse.data
 
   const acteurResponse = await axios.get(
-      'http://localhost:8000/api/actors?page=1',
+      'https://185.216.25.179/wr506/api/actors?page=1',
       {
         headers: {
           'Accept': 'application/json',

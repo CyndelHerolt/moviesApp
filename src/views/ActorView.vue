@@ -10,7 +10,7 @@ const userToken = ref(localStorage.getItem('user-token'));
 
 onMounted(async () => {
   const acteurResponse = await axios.get(
-      'http://localhost:8000/api/actors?page=1',
+      'https://185.216.25.179/wr506/api/actors?page=1',
       {
         headers: {
           'Accept': 'application/json',

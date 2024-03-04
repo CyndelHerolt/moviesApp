@@ -7,7 +7,7 @@ const password = ref('');
 
 const login = async () => {
   try {
-    const response = await axios.post('http://localhost:8000/api/login_check', {
+    const response = await axios.post('https://185.216.25.179/wr506/api/login_check', {
       username: username.value,
       password: password.value
     });
