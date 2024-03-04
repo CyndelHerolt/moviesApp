@@ -1,23 +1,27 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+export default async () => {
+  const copy = (await import('vite-plugin-copy')).default
+
+  return defineConfig({
+    plugins: [
+      vue(),
+      copy({
+        targets: [
+          { src: 'src/assets/posters/*', dest: 'dist/src/assets/posters' }
+        ],
+        hook: 'writeBundle' // exécuté après le processus de build
+      })
+    ],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    },
+    optimizeDeps: {
+      include: ['src/assets/posters/**']
     }
-  },
-  // Fonction servant à copier les fichiers du répertoire public/img
-  // dans le répertoire de sortie lors du build
-  // Cette fonction sera exécutée avant le processus de build
-  // Cela garantit que les fichiers sont disponibles lors de la construction
-  optimizeDeps: {
-    include: ['src/assets/posters/**']
-  }
-})
+  })
+}
