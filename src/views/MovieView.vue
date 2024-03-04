@@ -32,7 +32,7 @@ const getMovies = debounce(async (url) => {
 
 function previousPage() {
   if (previous.value != null) {
-    axios.get('http://localhost:8000' + previous.value, {
+    axios.get('https://185.216.25.179/wr506' + previous.value, {
       headers: {
         'Accept': 'application/ld+json',
         'Authorization': `Bearer ${userToken.value}`,
@@ -47,7 +47,7 @@ function previousPage() {
 
 function nextPage() {
   if (next.value != null) {
-    axios.get('http://localhost:8000' + next.value, {
+    axios.get('https://185.216.25.179/wr506' + next.value, {
       headers: {
         'Accept': 'application/ld+json',
         'Authorization': `Bearer ${userToken.value}`,
