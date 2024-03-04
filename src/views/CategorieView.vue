@@ -10,7 +10,7 @@ const userToken = ref(localStorage.getItem('user-token'));
 
 onMounted(async () => {
   const filmResponse = await axios.get(
-      'http://localhost:8000/api/categories?page=1',
+      'https://185.216.25.179/wr506/api/categories?page=1',
       {
         headers: {
           'Accept': 'application/json',

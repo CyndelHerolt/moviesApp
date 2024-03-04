@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const deleteMovie = async () => {
   try {
-    await axios.delete(`http://localhost:8000/api/movies/${movie.id}`, {
+    await axios.delete(`https://185.216.25.179/wr506/api/movies/${movie.id}`, {
       headers: {
         'Accept': '*/*',
         'Authorization': `Bearer ${localStorage.getItem('user-token')}`

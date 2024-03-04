@@ -16,7 +16,7 @@ let selectedCategoryId = ref(null)
 
 onMounted(async () => {
   const filmResponse = await axios.get(
-      'http://localhost:8000/api/movie/' + id,
+      'https://185.216.25.179/wr506/api/movie/' + id,
       {
         headers: {
           'Accept': 'application/json',
@@ -30,7 +30,7 @@ onMounted(async () => {
 
 onMounted(async () => {
   const filmCategoriesResponse = await axios.get(
-      'http://localhost:8000/api/categories?page=1',
+      'https://185.216.25.179/wr506/api/categories?page=1',
       {
         headers: {
           'Accept': 'application/json',
@@ -50,12 +50,12 @@ let fileInput = ref(null)
 
 async function updateFilm() {
   await axios.patch(
-      `http://localhost:8000/api/movies/${id}`,
+      `https://185.216.25.179/wr506/api/movies/${id}`,
       {
         title: film.value.title,
         description: film.value.description,
         duration: film.value.duration,
-        category: `http://localhost:8000/api/categories/${film.value.category.id}`,
+        category: `https://185.216.25.179/wr506/api/categories/${film.value.category.id}`,
       },
       {
         headers: {
@@ -83,7 +83,7 @@ async function uploadImage() {
   const formData = new FormData()
   formData.append('file', fileInput.value.files[0])
   await axios.post(
-      `http://localhost:8000/api/media_objects`,
+      `https://185.216.25.179/wr506/api/media_objects`,
       formData,
       {
         headers: {
@@ -94,7 +94,7 @@ async function uploadImage() {
   )
   uploadImg.value = false
   const filmResponse = await axios.get(
-      'http://localhost:8000/api/movie/' + id,
+      'https://185.216.25.179/wr506/api/movie/' + id,
       {
         headers: {
           'Accept': 'application/json',

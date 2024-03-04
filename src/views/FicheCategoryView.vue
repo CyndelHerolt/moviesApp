@@ -12,7 +12,7 @@ let categorie = ref('')
 
 onMounted(async () => {
   const categorieResponse = await axios.get(
-      'http://localhost:8000/api/categories/' + id,
+      'https://185.216.25.179/wr506/api/categories/' + id,
       {
         headers: {
           'Accept': 'application/json',
