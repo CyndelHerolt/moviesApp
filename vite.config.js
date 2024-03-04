@@ -2,12 +2,8 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-let copy
-
 export default async () => {
-  if (!copy) {
-    copy = (await import('vite-plugin-copy')).default
-  }
+  const copy = (await import('vite-plugin-copy')).default
 
   return defineConfig({
     plugins: [
